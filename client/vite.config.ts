@@ -9,7 +9,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'https://test-app-ci-cd-server.onrender.com',
+        target: 'https://test-app-ci-cd.onrender.com',
         changeOrigin: true,
         secure: false,
       },
