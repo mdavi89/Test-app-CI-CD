@@ -5,12 +5,16 @@ import routes from './routes/index.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serves static files in the entire client's dist folder
-app.use(express.static('../client/dist'));
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", FRONTEND_URL);
+    next();
+});
 
 app.use(routes);
 
