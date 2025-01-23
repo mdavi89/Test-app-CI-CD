@@ -11,7 +11,8 @@ export default defineConfig({
       '/api': {
         target: 'https://test-app-ci-cd-server.onrender.com/',
         changeOrigin: true,
-        secure: true,
+        secure: true,  // Use true if `server.com` uses HTTPS
+        rewrite: (path) => path.replace(/^\/api/, '/api'), // Optional if you need to modify the path
       },
     },
   },
