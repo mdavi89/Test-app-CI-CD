@@ -1,0 +1,28 @@
+# Exported from Render on 2025-01-23T19:22:52Z
+services:
+- type: web
+  name: Test-app-CI-CD
+  runtime: static
+  repo: https://github.com/mdavi89/Test-app-CI-CD
+  envVars:
+  - key: MONGODB_URI
+    sync: false
+  buildCommand: npm install && npm run build
+  staticPublishPath: dist
+  autoDeploy: false
+  rootDir: client
+- type: web
+  name: Test-app-CI-CD-Server
+  runtime: node
+  repo: https://github.com/mdavi89/Test-app-CI-CD
+  plan: free
+  envVars:
+  - key: FRONTEND_URL
+    sync: false
+  - key: MONGODB_URI
+    sync: false
+  region: oregon
+  buildCommand: npm install; npm run build; npm run seed
+  startCommand: npm run start
+  rootDir: server
+version: "1"
