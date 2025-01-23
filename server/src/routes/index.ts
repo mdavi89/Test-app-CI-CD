@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 router.use(
   '/api',
   createProxyMiddleware({
-    target: 'https://server.com', // Replace with your server URL
+    target: 'https://test-app-ci-cd-server.onrender.com/', // Replace with your server URL
     changeOrigin: true,           // Ensures the host header matches the target
     pathRewrite: {
       '^/api': '/api',            // Optional: Adjust if your server uses a different path structure
